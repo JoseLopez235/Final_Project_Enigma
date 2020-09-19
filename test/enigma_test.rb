@@ -8,6 +8,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_should_return_encrypted_message
+    skip
     enigma = Enigma.new
     expected =  {
       encryption: "keder ohulw",
@@ -25,9 +26,8 @@ class EnigmaTest < Minitest::Test
 
   def test_should_return_today_date
     enigma = Enigma.new
-    date = Date.today
-    date = date.strftime("%d%m%y")
-    assert_equal date, enigma.date_generator
+    Date.stubs(:today).returns(Date.new(2020,9,18))
+    assert_equal "180920", enigma.date_generator
   end
 
   def test_returns_hash_with_keys
