@@ -37,15 +37,15 @@ class EnigmaTest < Minitest::Test
     character = "h"
     shift = {A: 3}
     key_sym = :A
-    assert_equal "k", enigma.encrypt_letter_finder(character, shift, key_sym)
+    assert_equal "k", enigma.letter_finder(character, shift, key_sym, "encryption")
     character = "!"
     shift = {A: 56}
     key_sym = :A
-    assert_equal "!", enigma.encrypt_letter_finder(character, shift, key_sym)
+    assert_equal "!", enigma.letter_finder(character, shift, key_sym, "encryption")
     character = "e"
     shift = {A: 27}
     key_sym = :A
-    assert_equal "e", enigma.encrypt_letter_finder(character, shift, key_sym)
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym, "encryption")
   end
 
   def test_encrypted_hash_maker
@@ -55,7 +55,7 @@ class EnigmaTest < Minitest::Test
       key: "02715",
       date: "040895"
     }
-    assert_equal expected, enigma.encrypted_hash_maker("keder ohulw", "02715", "040895")
+    assert_equal expected, enigma.hash_maker("keder ohulw", "02715", "040895", "encryption")
   end
 
   def test_decrypt_letter_finder
@@ -63,15 +63,15 @@ class EnigmaTest < Minitest::Test
     character = "h"
     shift = {A: 3}
     key_sym = :A
-    assert_equal "e", enigma.decrypt_letter_finder(character, shift, key_sym)
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym, "decryption")
     character = "!"
     shift = {A: 56}
     key_sym = :A
-    assert_equal "!", enigma.decrypt_letter_finder(character, shift, key_sym)
+    assert_equal "!", enigma.letter_finder(character, shift, key_sym, "decryption")
     character = "e"
     shift = {A: 27}
     key_sym = :A
-    assert_equal "e", enigma.decrypt_letter_finder(character, shift, key_sym)
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym, "decryption")
   end
 
   def test_decrypted_hash_maker
@@ -81,7 +81,7 @@ class EnigmaTest < Minitest::Test
       key: "02715",
       date: "040895"
     }
-    assert_equal expected, enigma.decrypted_hash_maker("hello world", "02715", "040895")
+    assert_equal expected, enigma.hash_maker("hello world", "02715", "040895", "decryption")
   end
 
   def test_should_decrypt_message
@@ -99,5 +99,11 @@ class EnigmaTest < Minitest::Test
       date: "190920"
     }
     assert_equal expected, enigma.decrypt("hello world", "02715")
+  end
+
+  def test_cipher_message
+    enigma = Enigma.new
+    shift = enigma.final_shift(enigma.key_codes("02715"), enigma.key_offsets("040895"))
+    assert_equal "hello world", enigma.cipher_message("keder ohulw", shift, "decryption")
   end
 end
