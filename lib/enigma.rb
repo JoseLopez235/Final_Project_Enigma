@@ -6,16 +6,6 @@ class Enigma < Shift
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def key_offsets(date)
-    offset_hash = {}
-    key = (date.to_i ** 2).to_s.chars.pop(4)
-    offset_hash[:a_offset] = key[0]
-    offset_hash[:b_offset] = key[1]
-    offset_hash[:c_offset] = key[2]
-    offset_hash[:d_offset] = key[3]
-    offset_hash
-  end
-
   def final_shift(key_hash, offset_hash)
     final_shift = {}
     final_shift[:A] = key_hash[:a_key].to_i+offset_hash[:a_offset].to_i
