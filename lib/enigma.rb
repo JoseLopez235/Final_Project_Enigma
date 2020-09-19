@@ -1,13 +1,9 @@
 require 'date'
+require_relative 'shift'
 
-class Enigma
+class Enigma < Shift
   def initialize
     @alphabet = ("a".."z").to_a << " "
-  end
-
-  def key_generator
-    key = rand(1000..9999)
-    key = "0" + key.to_s
   end
 
   def date_generator
