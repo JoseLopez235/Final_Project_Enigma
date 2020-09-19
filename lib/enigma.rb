@@ -11,7 +11,8 @@ class Enigma
   end
 
   def date_generator
-
+    date = Date.today
+    date = date.strftime("%d%m%y")
   end
 
   def encrypt(message, key=key_generator, date=date_generator)

@@ -8,7 +8,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_should_return_encrypted_message
-    skip
     enigma = Enigma.new
     expected =  {
       encryption: "keder ohulw",
