@@ -39,4 +39,17 @@ class ShiftTest < Minitest::Test
     }
     assert_equal expected, enigma.key_offsets("040895")
   end
+
+  def test_final_shift
+    enigma = Enigma.new
+    key = enigma.key_codes("02715")
+    offset = enigma.key_offsets("040895")
+    expected = {
+      A: 3,
+      B: 27,
+      C: 73,
+      D: 20
+    }
+    assert_equal expected, enigma.final_shift(key, offset)
+  end
 end
