@@ -6,11 +6,6 @@ class Enigma < Shift
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def date_generator
-    date = Date.today
-    date = date.strftime("%d%m%y")
-  end
-
   def key_codes(key)
     key_hash = {}
     key_hash[:a_key] = key[0]+key[1]
