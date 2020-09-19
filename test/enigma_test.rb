@@ -32,12 +32,6 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.encrypt("hello world")
   end
 
-  def test_should_return_today_date
-    enigma = Enigma.new
-    Date.stubs(:today).returns(Date.new(2020,9,18))
-    assert_equal "180920", enigma.date_generator
-  end
-
   def test_returns_hash_with_keys
     enigma = Enigma.new
     expected = {

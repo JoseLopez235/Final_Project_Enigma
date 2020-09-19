@@ -11,4 +11,10 @@ class ShiftTest < Minitest::Test
     shift.stubs(:rand).returns(4321)
     assert_equal "04321", shift.key_generator
   end
+
+  def test_should_return_today_date
+    enigma = Enigma.new
+    Date.stubs(:today).returns(Date.new(2020,9,18))
+    assert_equal "180920", enigma.date_generator
+  end
 end
