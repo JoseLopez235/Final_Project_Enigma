@@ -43,6 +43,20 @@ class Enigma
     final_shift
   end
 
+  def letter_finder(character, shift, key_sym)
+    if @alphabet.include?(character)
+      if shift[key_sym] == 27
+        character
+      else
+        letter_index = @alphabet.find_index(character)
+        letter_shift = @alphabet[(letter_index + shift[key_sym]) % 27]
+        letter_shift
+      end
+    else
+      character
+    end
+  end
+
   def encrypt(message, key=key_generator, date=date_generator)
     encrypted_hash = {}
     encrypted_message = ""
@@ -54,17 +68,7 @@ class Enigma
     message.chars.each do |character|
       index = 0 if index > 3
       key_sym = keys[index].to_sym
-      if @alphabet.include?(character)
-        if shift[key_sym] == 27
-          encrypted_message << character
-        else
-          letter_index = @alphabet.find_index(character)
-          letter_shift = @alphabet[(letter_index + shift[key_sym]) % 27]
-          encrypted_message << letter_shift
-        end
-      else
-        encrypted_message << character
-      end
+      encrypted_message << letter_finder(character, shift, key_sym)
       index += 1
     end
     encrypted_hash[:encryption] = encrypted_message

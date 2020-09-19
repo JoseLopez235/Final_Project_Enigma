@@ -70,5 +70,13 @@ class EnigmaTest < Minitest::Test
     shift = {A: 3}
     key_sym = :A
     assert_equal "k", enigma.letter_finder(character, shift, key_sym)
+    character = "!"
+    shift = {A: 56}
+    key_sym = :A
+    assert_equal "!", enigma.letter_finder(character, shift, key_sym)
+    character = "e"
+    shift = {A: 27}
+    key_sym = :A
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym)
   end
 end
