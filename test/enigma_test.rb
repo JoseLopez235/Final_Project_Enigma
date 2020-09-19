@@ -63,4 +63,12 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, enigma.final_shift(key, offset)
   end
+
+  def test_letter_finder
+    enigma = Enigma.new
+    character = "h"
+    shift = {A: 3}
+    key_sym = :A
+    assert_equal "k", enigma.letter_finder(character, shift, key_sym)
+  end
 end
