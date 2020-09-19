@@ -12,4 +12,12 @@ module HelperMethod
       character
     end
   end
+
+  def encrypted_hash_maker(message, key, date)
+    encrypted_hash = {}
+    encrypted_hash[:encryption] = message
+    encrypted_hash[:key] = key
+    encrypted_hash[:date] = date
+    encrypted_hash
+  end
 end

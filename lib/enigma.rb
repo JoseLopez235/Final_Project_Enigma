@@ -8,14 +8,6 @@ class Enigma < Shift
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def encrypted_hash_maker(message, key, date)
-    encrypted_hash = {}
-    encrypted_hash[:encryption] = message
-    encrypted_hash[:key] = key
-    encrypted_hash[:date] = date
-    encrypted_hash
-  end
-
   def encrypt(message, key=key_generator, date=date_generator)
     shift = final_shift(key_codes(key), key_offsets(date))
     keys = ["A", "B", "C", "D"]
