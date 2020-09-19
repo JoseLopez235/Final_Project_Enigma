@@ -79,4 +79,14 @@ class EnigmaTest < Minitest::Test
     key_sym = :A
     assert_equal "e", enigma.letter_finder(character, shift, key_sym)
   end
+
+  def test_encrypted_hash_maker
+    enigma = Enigma.new
+    expected =  {
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+    }
+    assert_equal expected, enigma.encrypted_hash_maker("keder ohulw", "02715", "040895")
+  end
 end
