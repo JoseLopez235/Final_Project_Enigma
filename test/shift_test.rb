@@ -17,4 +17,15 @@ class ShiftTest < Minitest::Test
     Date.stubs(:today).returns(Date.new(2020,9,18))
     assert_equal "180920", enigma.date_generator
   end
+
+  def test_returns_hash_with_keys
+    enigma = Enigma.new
+    expected = {
+      a_key: "02",
+      b_key: "27",
+      c_key: "71",
+      d_key: "15"
+    }
+    assert_equal expected, enigma.key_codes("02715")
+  end
 end
