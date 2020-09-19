@@ -22,4 +22,16 @@ module HelperMethod
       character
     end
   end
+
+  def cipher_message(message, shift, cipher)
+    keys = ["A", "B", "C", "D"]
+    index = 0
+    message = message.downcase.chars.each_with_object("") do |character, message|
+      index = 0 if index > 3
+      key_sym = keys[index].to_sym
+      message << letter_finder(character, shift, key_sym, cipher)
+      index += 1
+    end
+    message
+  end
 end

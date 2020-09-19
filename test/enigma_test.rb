@@ -100,4 +100,10 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, enigma.decrypt("hello world", "02715")
   end
+
+  def test_cipher_message
+    enigma = Enigma.new
+    shift = enigma.final_shift(enigma.key_codes("02715"), enigma.key_offsets("040895"))
+    assert_equal "hello world", enigma.cipher_message("keder ohulw", shift, "decryption")
+  end
 end
