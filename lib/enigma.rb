@@ -15,6 +15,10 @@ class Enigma
     date = date.strftime("%d%m%y")
   end
 
+  def keys_code(key)
+
+  end
+
   def encrypt(message, key=key_generator, date=date_generator)
 
   end
