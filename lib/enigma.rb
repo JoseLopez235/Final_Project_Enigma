@@ -66,18 +66,15 @@ class Enigma
   end
 
   def encrypt(message, key=key_generator, date=date_generator)
-    encrypted_message = ""
-    key_hash = key_codes(key)
-    offset_hash = key_offsets(date)
-    shift = final_shift(key_hash, offset_hash)
+    shift = final_shift(key_codes(key), key_offsets(date))
     keys = ["A", "B", "C", "D"]
     index = 0
-    message.chars.each do |character|
+    message = message.downcase.chars.each_with_object("") do |character, message|
       index = 0 if index > 3
       key_sym = keys[index].to_sym
-      encrypted_message << letter_finder(character, shift, key_sym)
+      message << letter_finder(character, shift, key_sym)
       index += 1
     end
-    encrypted_hash_maker(encrypted_message, key, date)
+    encrypted_hash_maker(message, key, date)
   end
 end
