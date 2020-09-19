@@ -37,15 +37,15 @@ class EnigmaTest < Minitest::Test
     character = "h"
     shift = {A: 3}
     key_sym = :A
-    assert_equal "k", enigma.encrypt_letter_finder(character, shift, key_sym)
+    assert_equal "k", enigma.letter_finder(character, shift, key_sym, "encryption")
     character = "!"
     shift = {A: 56}
     key_sym = :A
-    assert_equal "!", enigma.encrypt_letter_finder(character, shift, key_sym)
+    assert_equal "!", enigma.letter_finder(character, shift, key_sym, "encryption")
     character = "e"
     shift = {A: 27}
     key_sym = :A
-    assert_equal "e", enigma.encrypt_letter_finder(character, shift, key_sym)
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym, "encryption")
   end
 
   def test_encrypted_hash_maker
@@ -63,15 +63,15 @@ class EnigmaTest < Minitest::Test
     character = "h"
     shift = {A: 3}
     key_sym = :A
-    assert_equal "e", enigma.decrypt_letter_finder(character, shift, key_sym)
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym, "decryption")
     character = "!"
     shift = {A: 56}
     key_sym = :A
-    assert_equal "!", enigma.decrypt_letter_finder(character, shift, key_sym)
+    assert_equal "!", enigma.letter_finder(character, shift, key_sym, "decryption")
     character = "e"
     shift = {A: 27}
     key_sym = :A
-    assert_equal "e", enigma.decrypt_letter_finder(character, shift, key_sym)
+    assert_equal "e", enigma.letter_finder(character, shift, key_sym, "decryption")
   end
 
   def test_decrypted_hash_maker

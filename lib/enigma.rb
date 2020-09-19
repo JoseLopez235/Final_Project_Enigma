@@ -15,7 +15,7 @@ class Enigma < Shift
     message = message.downcase.chars.each_with_object("") do |character, message|
       index = 0 if index > 3
       key_sym = keys[index].to_sym
-      message << encrypt_letter_finder(character, shift, key_sym)
+      message << letter_finder(character, shift, key_sym, "encryption")
       index += 1
     end
     hash_maker(message, key, date, "encryption")
@@ -28,7 +28,7 @@ class Enigma < Shift
     message = message.downcase.chars.each_with_object("") do |character, message|
       index = 0 if index > 3
       key_sym = keys[index].to_sym
-      message << decrypt_letter_finder(character, shift, key_sym)
+      message << letter_finder(character, shift, key_sym, "decryption")
       index += 1
     end
     hash_maker(message, key, date, "decryption")
