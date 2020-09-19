@@ -32,17 +32,6 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.encrypt("hello world")
   end
 
-  def test_returns_hash_with_offset_keys
-    enigma = Enigma.new
-    expected = {
-      a_offset: "1",
-      b_offset: "0",
-      c_offset: "2",
-      d_offset: "5"
-    }
-    assert_equal expected, enigma.key_offsets("040895")
-  end
-
   def test_final_shift
     enigma = Enigma.new
     key = enigma.key_codes("02715")
