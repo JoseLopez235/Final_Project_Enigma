@@ -21,14 +21,6 @@ class Enigma < Shift
     encrypted_hash_maker(message, key, date)
   end
 
-  def decrypted_hash_maker(message, key, date)
-    decrypted_hash = {}
-    decrypted_hash[:decryption] = message
-    decrypted_hash[:key] = key
-    decrypted_hash[:date] = date
-    decrypted_hash
-  end
-
   def decrypt(message, key, date=date_generator)
     shift = final_shift(key_codes(key), key_offsets(date))
     keys = ["A", "B", "C", "D"]

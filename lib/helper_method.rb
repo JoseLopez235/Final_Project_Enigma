@@ -34,4 +34,12 @@ module HelperMethod
       character
     end
   end
+
+  def decrypted_hash_maker(message, key, date)
+    decrypted_hash = {}
+    decrypted_hash[:decryption] = message
+    decrypted_hash[:key] = key
+    decrypted_hash[:date] = date
+    decrypted_hash
+  end
 end
