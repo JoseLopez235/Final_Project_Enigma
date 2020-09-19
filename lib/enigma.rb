@@ -1,18 +1,11 @@
 require 'date'
 require_relative 'shift'
+require_relative 'helper_method'
 
 class Enigma < Shift
+  include HelperMethod
   def initialize
     @alphabet = ("a".."z").to_a << " "
-  end
-
-  def final_shift(key_hash, offset_hash)
-    final_shift = {}
-    final_shift[:A] = key_hash[:a_key].to_i+offset_hash[:a_offset].to_i
-    final_shift[:B] = key_hash[:b_key].to_i+offset_hash[:b_offset].to_i
-    final_shift[:C] = key_hash[:c_key].to_i+offset_hash[:c_offset].to_i
-    final_shift[:D] = key_hash[:d_key].to_i+offset_hash[:d_offset].to_i
-    final_shift
   end
 
   def encrypt_letter_finder(character, shift, key_sym)
