@@ -1,5 +1,4 @@
 module HelperMethod
-
   def hash_maker(message, key, date, cipher)
     hash = {}
     hash["#{cipher}".to_sym] = message
