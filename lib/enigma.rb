@@ -57,8 +57,15 @@ class Enigma
     end
   end
 
-  def encrypt(message, key=key_generator, date=date_generator)
+  def encrypted_hash_maker(message, key, date)
     encrypted_hash = {}
+    encrypted_hash[:encryption] = message
+    encrypted_hash[:key] = key
+    encrypted_hash[:date] = date
+    encrypted_hash
+  end
+
+  def encrypt(message, key=key_generator, date=date_generator)
     encrypted_message = ""
     key_hash = key_codes(key)
     offset_hash = key_offsets(date)
@@ -71,9 +78,6 @@ class Enigma
       encrypted_message << letter_finder(character, shift, key_sym)
       index += 1
     end
-    encrypted_hash[:encryption] = encrypted_message
-    encrypted_hash[:key] = key
-    encrypted_hash[:date] = date
-    encrypted_hash
+    encrypted_hash_maker(encrypted_message, key, date)
   end
 end
