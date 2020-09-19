@@ -55,7 +55,7 @@ class EnigmaTest < Minitest::Test
       key: "02715",
       date: "040895"
     }
-    assert_equal expected, enigma.encrypted_hash_maker("keder ohulw", "02715", "040895")
+    assert_equal expected, enigma.hash_maker("keder ohulw", "02715", "040895", "encryption")
   end
 
   def test_decrypt_letter_finder
@@ -81,7 +81,7 @@ class EnigmaTest < Minitest::Test
       key: "02715",
       date: "040895"
     }
-    assert_equal expected, enigma.decrypted_hash_maker("hello world", "02715", "040895")
+    assert_equal expected, enigma.hash_maker("hello world", "02715", "040895", "decryption")
   end
 
   def test_should_decrypt_message

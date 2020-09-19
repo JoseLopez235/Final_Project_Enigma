@@ -18,7 +18,7 @@ class Enigma < Shift
       message << encrypt_letter_finder(character, shift, key_sym)
       index += 1
     end
-    encrypted_hash_maker(message, key, date)
+    hash_maker(message, key, date, "encryption")
   end
 
   def decrypt(message, key, date=date_generator)
@@ -31,6 +31,6 @@ class Enigma < Shift
       message << decrypt_letter_finder(character, shift, key_sym)
       index += 1
     end
-    decrypted_hash_maker(message, key, date)
+    hash_maker(message, key, date, "decryption")
   end
 end

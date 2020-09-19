@@ -13,12 +13,12 @@ module HelperMethod
     end
   end
 
-  def encrypted_hash_maker(message, key, date)
-    encrypted_hash = {}
-    encrypted_hash[:encryption] = message
-    encrypted_hash[:key] = key
-    encrypted_hash[:date] = date
-    encrypted_hash
+  def hash_maker(message, key, date, symbol)
+    hash = {}
+    hash["#{symbol}".to_sym] = message
+    hash[:key] = key
+    hash[:date] = date
+    hash
   end
 
   def decrypt_letter_finder(character, shift, key_sym)
@@ -33,13 +33,5 @@ module HelperMethod
     else
       character
     end
-  end
-
-  def decrypted_hash_maker(message, key, date)
-    decrypted_hash = {}
-    decrypted_hash[:decryption] = message
-    decrypted_hash[:key] = key
-    decrypted_hash[:date] = date
-    decrypted_hash
   end
 end
