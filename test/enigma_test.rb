@@ -15,4 +15,10 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
+
+  def test_should_return_random_key
+    enigma = Enigma.new
+    enigma.key_generator.stubs(:rand).returns(4321)
+    assert_equal 4321, enigma.key_generator
+  end
 end
