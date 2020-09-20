@@ -15,19 +15,20 @@ class EnigmaTest < Minitest::Test
       date: "040895"
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
-
+    Date.stubs(:today).returns(Date.new(2020,9,18))
     expected =  {
       encryption: "pib wdmczpu",
       key: "02715",
-      date: "190920"
+      date: "180920"
     }
     assert_equal expected, enigma.encrypt("hello world", "02715")
 
     key = enigma.stubs(:rand).returns(4321)
+    Date.stubs(:today).returns(Date.new(2020,9,18))
     expected =  {
       encryption: "ryqfytaiaei",
       key: "04321",
-      date: "190920"
+      date: "180920"
     }
     assert_equal expected, enigma.encrypt("hello world")
   end
@@ -93,10 +94,11 @@ class EnigmaTest < Minitest::Test
     }
     assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
 
+    Date.stubs(:today).returns(Date.new(2020,9,18))
     expected =  {
       decryption: " avxgwf jhn",
       key: "02715",
-      date: "190920"
+      date: "180920"
     }
     assert_equal expected, enigma.decrypt("hello world", "02715")
   end
