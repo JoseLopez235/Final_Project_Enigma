@@ -15,6 +15,7 @@ class EnigmaTest < Minitest::Test
       date: "040895"
     }
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
+    
     Date.stubs(:today).returns(Date.new(2020,9,18))
     expected =  {
       encryption: "pib wdmczpu",
